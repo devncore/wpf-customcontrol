@@ -9,9 +9,11 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace CustomControl.Controls
 {
@@ -28,17 +30,35 @@ namespace CustomControl.Controls
             InitializeComponent();
             DrawCircle();
             btn.Click += Btn_Click;
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.IsEnabled = true;
+            timer.Interval = new TimeSpan(0, 0, 0, 1);
+            timer.Tick += new EventHandler(Test_Tick);
+        }
+
+        private void Test_Tick(object sender, EventArgs e)
+        {
+            RotateTransform rt = new RotateTransform(angle, needle.X1, needle.Y1);
+            DoubleAnimation a = new DoubleAnimation(angle, angle+=30, new TimeSpan(0, 0, 0, 1));
+
+            if (angle == 360)
+                angle = 0;
+
+            needle.RenderTransform = rt;
+
+            rt.BeginAnimation(RotateTransform.AngleProperty, a);
         }
 
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            DrawCircle();
-            RotateTransform rotate = new RotateTransform(angle, needle.X1, needle.Y1);
-            needle.RenderTransform = rotate;
-            angle += 30;
+            //DrawCircle();
+            //RotateTransform rotate = new RotateTransform(angle, needle.X1, needle.Y1);
+            //needle.RenderTransform = rotate;
+            //angle += 30;
 
-            if (angle == 360)
-                angle = 0;
+            //if (angle == 360)
+            //    angle = 0;
         }
 
         private void DrawCircle()
@@ -61,9 +81,9 @@ namespace CustomControl.Controls
             needle.Stroke = Brushes.Red;
             needle.StrokeThickness = 3;
             needle.X1 = cx;
-            needle.X2 = cx + 30;
+            needle.X2 = cx + 50;
             needle.Y1 = cy;
-            needle.Y2 = cy + 30;
+            needle.Y2 = cy + 50;
 
             canvas.Children.Add(needle);
 
