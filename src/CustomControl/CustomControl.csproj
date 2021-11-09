@@ -70,6 +70,7 @@
     <Compile Include="Controls\Compass.xaml.cs">
       <DependentUpon>Compass.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Enum\DegreeType.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

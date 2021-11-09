@@ -110,7 +110,7 @@ namespace CustomControl.Controls
                     x1 = cx + outer_r * cos;
                     y1 = cy + outer_r * sin;
                     Label label = new Label();
-                    //label.Content = (Compass)i;
+                    label.Content = (DegreeType)i;
                     label.Foreground = color;
                     Canvas.SetLeft(label, x2);
                     Canvas.SetTop(label, y2);
