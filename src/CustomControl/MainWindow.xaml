@@ -6,8 +6,23 @@
         xmlns:local="clr-namespace:CustomControl"
         xmlns:ctrls="clr-namespace:CustomControl.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <ctrls:Compass/>
+        Title="MainWindow" Height="900" Width="1200">
+    <Grid Background="#25244B">
+
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="1" BorderBrush="#Ffffff">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <TextBox Width="120" Margin="0 0 10 0" x:Name="tbx"/>
+                    <Button HorizontalAlignment="Right" VerticalAlignment="Top" Content="테스트" x:Name="btn"/>
+                </StackPanel>
+                <ctrls:Compass/>
+            </StackPanel>
+        </Border>
+        <Border HorizontalAlignment="Center" VerticalAlignment="Top" BorderThickness="1" BorderBrush="#Ffffff">
+            <ctrls:CustomGauge SecondMark="9" Mark="45" Radius="130"/>
+        </Border>
+        <Border HorizontalAlignment="Center" VerticalAlignment="Top" BorderThickness="1" BorderBrush="#Ffffff">
+            <ctrls:CustomGauge SecondMark="9" Mark="45" Radius="130"/>
+        </Border>
     </Grid>
 </Window>
